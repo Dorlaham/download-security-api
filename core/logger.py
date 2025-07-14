@@ -19,6 +19,7 @@ def log_to_sqs(func):
         response, log_event = await func(*args, **kwargs)
 
         try:
+            print(QUEUE_URL)
             sqs.send_message(
                 QueueUrl=QUEUE_URL,
                 MessageBody=json.dumps(log_event)
