@@ -1,7 +1,4 @@
-from dotenv import load_dotenv
 import os
-
-load_dotenv()
 
 # Configuration
 PROTECTED_PATHS = ["/api/config", "/api/logs"]
@@ -20,7 +17,9 @@ JWKS_URL = f"https://cognito-idp.{COGNITO_REGION}.amazonaws.com/{USERPOOL_ID}/.w
 
 # AWS Settings
 REGION = os.getenv("REGION", "eu-west-1")
-LOGS_TABLE = os.getenv("LOGS_TABLE", "default-logs-table")
-CONFIG_TABLE = os.getenv("CONFIG_TABLE", "default-config-table")
+LOGS_TABLE = os.getenv("LOGS_TABLE", "dorlaham-download-logs")
+CONFIG_TABLE = os.getenv("CONFIG_TABLE", "dorlaham-block-config")
 
 QUEUE_URL = os.getenv("LOGS_QUEUE_URL")
+
+print(LOGS_TABLE, CONFIG_TABLE)
