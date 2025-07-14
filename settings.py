@@ -21,9 +21,3 @@ LOGS_TABLE = os.getenv("LOGS_TABLE", "dorlaham-download-logs")
 CONFIG_TABLE = os.getenv("CONFIG_TABLE", "dorlaham-block-config")
 
 QUEUE_URL = os.getenv("LOGS_QUEUE_URL")
-
-print("✅ ENV DEBUG:", {
-    "LOGS_QUEUE_URL": os.getenv("LOGS_QUEUE_URL"),
-    "CONFIG_TABLE": os.getenv("CONFIG_TABLE"),
-    "REGION": os.getenv("REGION")
-})
