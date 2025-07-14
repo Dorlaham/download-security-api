@@ -1,15 +1,10 @@
 import boto3
 from magic import Magic
 from typing import Tuple
-from settings import REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, CONFIG_TABLE
+from settings import REGION, CONFIG_TABLE
 
 # DynamoDB client
-dynamodb = boto3.resource(
-    "dynamodb",
-    region_name=REGION,
-    aws_access_key_id=AWS_ACCESS_KEY_ID,
-    aws_secret_access_key=AWS_SECRET_ACCESS_KEY
-)
+dynamodb = boto3.resource("dynamodb", region_name=REGION)
 
 # MIME type detector using libmagic
 magic_detector = Magic(mime=True)

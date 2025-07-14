@@ -3,14 +3,10 @@ from typing import List
 
 import boto3
 from boto3.dynamodb.conditions import Key
-from settings import REGION, LOGS_TABLE, CONFIG_TABLE, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+from settings import REGION, LOGS_TABLE, CONFIG_TABLE
 
-dynamodb = boto3.resource(
-    "dynamodb",
-    region_name=REGION,
-    aws_access_key_id=AWS_ACCESS_KEY_ID,
-    aws_secret_access_key=AWS_SECRET_ACCESS_KEY
-)
+dynamodb = boto3.resource("dynamodb", region_name=REGION)
+
 
 async def get_logs(limit=100, last_evaluated_key=None):
     """

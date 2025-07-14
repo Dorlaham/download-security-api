@@ -1,16 +1,12 @@
 import os
 import boto3
 import json
-from datetime import datetime
 from functools import wraps
-from settings import REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, QUEUE_URL
+from settings import REGION, QUEUE_URL
 # Initialize SQS client and get queue URL from environment
-sqs = boto3.client(
-    "sqs",
-    region_name=REGION,
-    aws_access_key_id=AWS_ACCESS_KEY_ID,
-    aws_secret_access_key=AWS_SECRET_ACCESS_KEY
-)
+
+sqs = boto3.resource("sqs", region_name=REGION)
+
 
 
 def log_to_sqs(func):
