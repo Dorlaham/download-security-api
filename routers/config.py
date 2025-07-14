@@ -14,7 +14,7 @@ async def fetch_blocked_types(request: Request):
     config = await get_block_config()
     return config
 
-@router.post("/blocked-types", response_model=UpdateBlockedTypesResponse)
+@router.put("/blocked-types", response_model=UpdateBlockedTypesResponse)
 @limiter.limit("5/minute")
 async def set_blocked_types(request: Request, data: BlockedTypes):
     """
