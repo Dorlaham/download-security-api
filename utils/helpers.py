@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 from core.detector import detect_mime_type, is_blocked
 
 def parse_request_body(event):
@@ -32,7 +32,7 @@ def build_log_event(filename, mime_type, allow, url=""):
     Creates a log dictionary with all relevant fields.
     """
     return {
-        "timestamp": datetime.now(UTC).isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "filename": filename,
         "mime_type": mime_type,
         "allow": allow,

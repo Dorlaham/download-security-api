@@ -2,7 +2,7 @@ from jose import jwt, jwk
 from jose.utils import base64url_decode
 from typing import Optional
 import requests
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 from settings import JWKS_URL, APP_CLIENT_ID
 
 # Cached JWKS to avoid repeated network calls
@@ -53,8 +53,8 @@ def verify_cognito_jwt_token(token: str) -> Optional[dict]:
 
         # Use timezone-aware datetime comparison
         if "exp" in claims:
-            exp = datetime.fromtimestamp(claims["exp"], UTC)
-            if exp < datetime.now(UTC):
+            exp = datetime.fromtimestamp(claims["exp"], timezone.utc)
+            if exp < datetime.now(timezone.utc):
                 return None
 
         if claims.get("aud") != APP_CLIENT_ID:
